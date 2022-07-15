@@ -1,0 +1,46 @@
+.App {
+    text-align: center;
+    background-color: #0A1929;
+    height: 100%;
+}
+
+html,
+body,
+#root {
+    height: 100%;
+}
+
+input {
+    color: #d7d5d5 !important;
+    font-weight: 100 !important;
+}
+
+.search {
+    width: 90% !important;
+    color: white !important;
+    max-width: 900px;
+}
+
+.search-div {
+    padding: 1.5rem 0px;
+}
+
+.MuiImageListItem-root {
+    box-shadow: 10px 10px 20px #07111c, -10px -10px 20px #0d2136;
+    border-radius: 15px;
+}
+
+.MuiImageListItemBar-root {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.pokemon-img {
+    width: 110px !important;
+    height: auto !important;
+    margin: 0rem auto 5rem;
+}
+
+.css-ztrqiq-MuiImageListItemBar-root {
+    background: #07121e
+}
