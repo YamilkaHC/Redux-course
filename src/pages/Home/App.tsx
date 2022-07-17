@@ -34,7 +34,7 @@ function App() {
       </header>
       <div className="header">
         <div className="hr-vertial"></div>
-        <div className="d-flex justify-content-between logo p-5">
+        <div className="d-flex justify-content-between logo p-5 pb-0">
           <img width={120} src="/assets/logo.svg" />
         </div>
         <div className="d-flex justify-content-between">
@@ -45,25 +45,27 @@ function App() {
               <img src="/assets/pokemonButton.svg" />
               See pokemons
             </button>
-
-            <div className="pokeball">
-              <img src="/assets/pokeball.svg" />
+            <div className="pokeball mb-5 ms-5">
+              <img className="m-auto" src="/assets/pokeball.svg" />
             </div>
           </div>
           <div className="header-rigth">
-            <img src="/assets/" />
+            {/* <img className="banner-svg" src="/assets/banner.svg" /> */}
           </div>
         </div>
+        <div className="hr-horizontal top-1"></div>
+
       </div>
 
-      {/* <div className="search-div">
+<div className="mt-5 pt-5">
+      <div className="search-div">
         <Searcher />
       </div>
 
       <ImageList style={{ margin: "1rem 0rem" }} sx={{ width: "100%" }}>
         <PokemonCard title={"Ditto"} img={""} text={"Fire and Magic"} />
       </ImageList>
-     */}
+      </div>
     </div>
   );
 }
