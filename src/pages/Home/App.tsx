@@ -49,22 +49,19 @@ function App() {
               <img className="m-auto" src="/assets/pokeball.svg" />
             </div>
           </div>
-          <div className="header-rigth">
-            {/* <img className="banner-svg" src="/assets/banner.svg" /> */}
-          </div>
+          <div className="header-rigth"></div>
         </div>
         <div className="hr-horizontal top-1"></div>
-
       </div>
 
-<div className="mt-5 pt-5">
-      <div className="search-div">
-        <Searcher />
-      </div>
+      <div className="mt-5 pt-5">
+        <div className="search-div">
+          <Searcher />
+        </div>
 
-      <ImageList style={{ margin: "1rem 0rem" }} sx={{ width: "100%" }}>
-        <PokemonCard title={"Ditto"} img={""} text={"Fire and Magic"} />
-      </ImageList>
+        <ImageList style={{ margin: "1rem 0rem" }} sx={{ width: "100%" }}>
+          <PokemonCard title={"Ditto"} img={""} text={"Fire and Magic"} />
+        </ImageList>
       </div>
     </div>
   );

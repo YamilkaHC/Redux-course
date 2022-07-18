@@ -2,7 +2,7 @@
     --fontDosis: 'Dosis', sans-serif;
     --fontShoulder: 'Big Shoulders Stencil Display', cursive;
     --bg-global: #1C0B20;
-    --size14: 14px;
+    --size14: 1vw;
     --size30: 30px;
     --size20: 20px;
     --size40: 40px;
@@ -26,8 +26,8 @@ h1 {
 .button-header {
     min-width: 165px;
     width: 11vw;
-    font-size: 1vw;
-    
+    font-size: var(--size14);
+
     height: 3vw;
     min-height: 50px;
     background: rgba(217, 217, 217, 0.03);
@@ -39,8 +39,8 @@ h1 {
     font-weight: 100;
 }
 
-#root{
-background-color: var(--bg-global);
+#root {
+    background-color: var(--bg-global);
 }
 
 .App {
@@ -61,7 +61,7 @@ body,
     left: 17%;
 }
 
-.top-1{
+.top-1 {
     top: auto !important;
 }
 
@@ -97,9 +97,34 @@ input {
 }
 
 .search {
-    width: 90% !important;
+    width: 62vw !important;
     color: white !important;
-    max-width: 900px;
+
+}
+
+.filter-div {
+    width: 63vw !important;
+    margin: 2rem auto;
+    padding: 0px 0.5rem;
+}
+
+.filter-badge {
+    padding: 0.3vw 1vw 0.3vw 1.3vw;
+    background: #1E0719;
+    border-radius: 25px;
+    color: white;
+    font-weight: 100;
+    font-size: var(--size14);
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transform: translateY(0px);
+    transition: transform .6s ease;
+}
+
+.filter-badge:hover{
+    transform: translateY(-6px);
+    transition: transform .6s ease;
 }
 
 .search-div {
@@ -111,7 +136,7 @@ input {
     border-radius: 15px;
 }
 
-.css-hdw1oc{
+.css-hdw1oc {
     float: left !important;
 }
 
@@ -130,7 +155,7 @@ input {
     background: #07121e
 }
 
-.pokeball{
+.pokeball {
     width: 150px;
     height: 150px;
     margin-top: 90px;
@@ -144,8 +169,7 @@ input {
 
 
 @media only screen and (max-width: 1200px) {
-    .button-header {
-      
-        font-size: var(--size14);
-    }
+  :root{
+    --size14: 14px;
   }
+}
