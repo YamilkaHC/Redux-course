@@ -5,16 +5,11 @@ import { useState } from "react";
 
 const Searcher = () => {
   const [value, setValue] = useState("");
+  
   return (
     <>
       <TextField
-        InputProps={{
-          endAdornment: (
-            <InputAdornment position="start">
-              <SearchIcon color="secondary" />
-            </InputAdornment>
-          ),
-        }}
+        InputProps={{ endAdornment: ( <InputAdornment position="start"> <SearchIcon color="secondary" /> </InputAdornment> ), }}
         onChange={(e) => setValue(e.target.value)}
         className="search"
         id="outlined-basic"
@@ -28,7 +23,7 @@ const Searcher = () => {
         {["", "", "", "", "", ""].map(() => (
           <div className="d-flex filter-badge gap-2 justify-content-between">
             <span>Water</span>
-            <img src="/assets/filterwater.svg" />
+            <img alt="pokemon" src="/assets/filterwater.svg" />
           </div>
         ))}
       </div>
