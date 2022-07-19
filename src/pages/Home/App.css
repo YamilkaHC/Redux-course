@@ -3,12 +3,21 @@
     --fontShoulder: 'Big Shoulders Stencil Display', cursive;
     --bg-global: #1C0B20;
     --size14: 1vw;
+    --size18: 1.2vw;
     --size30: 30px;
     --size20: 20px;
     --size40: 40px;
 
 }
 
+
+
+.text-18{
+    color: white !important;
+    font-family: var(--fontDosis);
+    font-weight: 200;
+    font-size: var(--size18);
+}
 
 h1 {
     /* position: absolute; */
@@ -122,9 +131,45 @@ input {
     transition: transform .6s ease;
 }
 
-.filter-badge:hover{
-    transform: translateY(-6px);
+.button-header svg{
+    width: 2.5vw;
+    min-width: 35px;
+}
+
+.logo img{
+    width: 8vw !important;
+    min-width: 110px;
+}
+
+.css-nxo287-MuiInputBase-input-MuiOutlinedInput-input{
+    font-size: 1vw !important;
+    height: 1.6vw !important;
+}
+
+.filter-badge:hover {
+    transform: translateY(-8px);
     transition: transform .6s ease;
+}
+.list-group{
+    display: grid !important;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 14vw));
+    width: 63vw;
+    margin: auto;
+    gap: 5rem;
+    justify-content: space-between;
+}
+
+.pokemon-card {
+    min-width: 250px;
+    width: 14vw;
+    min-height: 250px;
+    height: 14vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background: rgba(217, 217, 217, 0.08);
+    box-shadow: 6px 6px 9px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
 }
 
 .search-div {
@@ -146,9 +191,22 @@ input {
 }
 
 .pokemon-img {
-    width: 110px !important;
+    width: 100px !important;
     height: auto !important;
-    margin: 0rem auto 5rem;
+    margin: 2rem auto 0rem;
+}
+
+.start{
+    cursor: pointer;
+}
+
+.text-card{
+    cursor: pointer;
+
+}
+
+.text-card:hover{
+    color: #e71fff !important;
 }
 
 .css-ztrqiq-MuiImageListItemBar-root {
@@ -169,7 +227,7 @@ input {
 
 
 @media only screen and (max-width: 1200px) {
-  :root{
-    --size14: 14px;
-  }
+    :root {
+        --size14: 14px;
+    }
 }

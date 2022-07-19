@@ -59,9 +59,11 @@ function App() {
           <Searcher />
         </div>
 
-        <ImageList style={{ margin: "1rem 0rem" }} sx={{ width: "100%" }}>
+        <div className="list-group d-grid">
+        {["", "", "", "", "", ""].map(() => (
           <PokemonCard title={"Ditto"} img={""} text={"Fire and Magic"} />
-        </ImageList>
+        ))}
+        </div>
       </div>
     </div>
   );
