@@ -27,9 +27,14 @@ function App() {
               <img alt="pokeball button" src="/assets/pokemonButton.svg" />
               See pokemons
             </button>
-            <div className="pokeball mb-5 ms-5">
-              <img alt="pokeball" className="m-auto" src="/assets/pokeball.svg" />
+
+
+            
+            <div className="pokeball mb-5 ms-5 float-area">
+              <img alt="pokeball" className="m-auto floating-img" src="/assets/pokeball.svg" />
             </div>
+          
+ 
           </div>
           <div className="header-rigth"></div>
         </div>

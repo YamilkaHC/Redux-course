@@ -12,7 +12,7 @@
 
 
 
-.text-18{
+.text-18 {
     color: white !important;
     font-family: var(--fontDosis);
     font-weight: 200;
@@ -131,17 +131,17 @@ input {
     transition: transform .6s ease;
 }
 
-.button-header svg{
+.button-header svg {
     width: 2.5vw;
     min-width: 35px;
 }
 
-.logo img{
+.logo img {
     width: 8vw !important;
     min-width: 110px;
 }
 
-.css-nxo287-MuiInputBase-input-MuiOutlinedInput-input{
+.css-nxo287-MuiInputBase-input-MuiOutlinedInput-input {
     font-size: 1vw !important;
     height: 1.6vw !important;
 }
@@ -150,7 +150,8 @@ input {
     transform: translateY(-8px);
     transition: transform .6s ease;
 }
-.list-group{
+
+.list-group {
     display: grid !important;
     grid-template-columns: repeat(auto-fill, minmax(250px, 14vw));
     width: 63vw;
@@ -196,16 +197,16 @@ input {
     margin: 2rem auto 0rem;
 }
 
-.start{
+.start {
     cursor: pointer;
 }
 
-.text-card{
+.text-card {
     cursor: pointer;
 
 }
 
-.text-card:hover{
+.text-card:hover {
     color: #e71fff !important;
 }
 
@@ -225,9 +226,110 @@ input {
 }
 
 
+.p-card {
+    font-weight: 100;
+    font-size: 13px;
+    text-align: initial;
+    line-height: 20px;
+    padding: 0px 25px;
+
+}
+
 
 @media only screen and (max-width: 1200px) {
     :root {
         --size14: 14px;
+        --size18: 18px;
+
+    }
+
+    .css-nxo287-MuiInputBase-input-MuiOutlinedInput-input {
+        font-size: 14px !important;
+    }
+}
+
+
+@media only screen and (max-width: 880px) {
+
+
+    .list-group {
+        display: grid !important;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 14vw));
+        width: 90%;
+        margin: auto;
+        gap: 3rem;
+        justify-content: center;
+    }
+}
+
+
+
+.flip-card {
+    background-color: transparent;
+    min-width: 250px;
+    width: 14vw;
+    min-height: 250px;
+    height: 14vw;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.flip-card-active .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.flip-card-front {}
+
+.flip-card-back {
+
+    transform: rotateY(180deg);
+}
+
+
+.float-area {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.floating-img {
+    transform: translateY(-5%);
+    animation: floater 2s infinite;
+    transition: ease 1;
+}
+
+
+.floating-img:hover {
+    transform: translateY(0%);
+    animation: none;
+    transition: transform ease 1;
+}
+
+@keyframes floater {
+    0% {
+        transform: translateY(-5%);
+        transition: ease-in 1s;
+    }
+
+    50% {
+        transform: translateY(5%);
+        transition: ease 1s;
     }
 }
