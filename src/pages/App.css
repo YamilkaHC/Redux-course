@@ -1,0 +1,309 @@
+:root {
+    --fontDosis: 'Dosis', sans-serif;
+    --fontShoulder: 'Big Shoulders Stencil Display', cursive;
+    --bg-global: #1C0B20;
+    --size14: 1vw;
+    --size18: 1.2vw;
+    --size30: 30px;
+    --size20: 20px;
+    --size40: 40px;
+}
+
+.text-18 {
+    color: white !important;
+    font-family: var(--fontDosis);
+    font-weight: 200;
+    font-size: var(--size18);
+}
+
+h1 {
+    /* position: absolute; */
+    font-family: var(--fontDosis);
+    font-style: normal;
+    font-weight: 600 !important;
+    font-size: 11vw !important;
+    color: #FFFFFF;
+    z-index: 3;
+    z-index: 5;
+    position: relative;
+}
+
+.button-header {
+    min-width: 165px;
+    width: 11vw;
+    font-size: var(--size14);
+    height: 3vw;
+    min-height: 50px;
+    background: rgba(217, 217, 217, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.34);
+    box-shadow: inset -3px -3px 4px rgba(0, 0, 0, 0.6), inset -5px -5px 25px rgba(241, 241, 241, 0.07);
+    backdrop-filter: blur(4px);
+    border-radius: 22px;
+    color: white;
+    font-weight: 100;
+}
+
+#root {
+    background-color: var(--bg-global);
+}
+
+.App {
+    text-align: center;
+    height: 100%;
+}
+
+html,
+body,
+#root {
+    /* height: 100%; */
+}
+
+.hr-vertial {
+    position: absolute;
+    border-left: 1.5px solid #53314E;
+    height: 737px;
+    left: 17%;
+}
+
+.top-1 {
+    top: auto !important;
+}
+
+.header-rigth {
+    background-image: url("/public/assets/banner.svg");
+    height: 37vw;
+    background-repeat: no-repeat;
+    background-size: contain;
+    z-index: 3;
+    width: 50%;
+}
+
+.hr-horizontal {
+    position: absolute;
+    border-bottom: 1.5px solid #53314E;
+    width: 100%;
+    top: 160px;
+}
+
+.banner-svg {
+    position: relative;
+    top: -40px;
+    width: 800px;
+}
+
+input {
+    color: #d7d5d5 !important;
+    font-weight: 100 !important;
+}
+
+.search {
+    width: 62vw !important;
+    color: white !important;
+}
+
+.filter-div {
+    width: 63vw !important;
+    margin: 2rem auto;
+    padding: 0px 0.5rem;
+}
+
+.filter-badge {
+    padding: 0.3vw 1vw 0.3vw 1.3vw;
+    background: #1E0719;
+    border-radius: 25px;
+    color: white;
+    font-weight: 100;
+    font-size: var(--size14);
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transform: translateY(0px);
+    transition: transform .6s ease;
+}
+
+.button-header svg {
+    width: 2.5vw;
+    min-width: 35px;
+}
+
+.logo img {
+    width: 8vw !important;
+    min-width: 110px;
+}
+
+.css-nxo287-MuiInputBase-input-MuiOutlinedInput-input {
+    font-size: 1vw !important;
+    height: 1.6vw !important;
+}
+
+.filter-badge:hover {
+    transform: translateY(-8px);
+    transition: transform .6s ease;
+}
+
+.list-group {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 14vw));
+    width: 63vw;
+    margin: auto;
+    gap: 5rem;
+    justify-content: space-between;
+}
+
+.pokemon-card {
+    min-width: 250px;
+    width: 14vw;
+    min-height: 250px;
+    height: 14vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background: rgba(217, 217, 217, 0.08);
+    box-shadow: 6px 6px 9px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+}
+
+.search-div {
+    padding: 1.5rem 0px;
+}
+
+.MuiImageListItem-root {
+    box-shadow: 10px 10px 20px #07111c, -10px -10px 20px #0d2136;
+    border-radius: 15px;
+}
+
+.css-hdw1oc {
+    float: left !important;
+}
+
+.MuiImageListItemBar-root {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.pokemon-img {
+    width: 100px !important;
+    height: auto !important;
+    margin: 2rem auto 0rem;
+}
+
+.start {
+    cursor: pointer;
+}
+
+.text-card {
+    cursor: pointer;
+}
+
+.text-card:hover {
+    color: #e71fff !important;
+}
+
+.css-ztrqiq-MuiImageListItemBar-root {
+    background: #07121e
+}
+
+.pokeball {
+    width: 150px;
+    height: 150px;
+    margin-top: 90px;
+    background: rgba(225, 221, 221, 0.08);
+    box-shadow: inset 0px 0px 4px rgb(240 20 254 / 31%), inset 3px 3px 4px #f014fe, inset 5px 7px 4px rgb(255 255 255 / 10%);
+    backdrop-filter: blur(4px);
+    border-radius: 50%;
+    display: flex;
+}
+
+.p-card {
+    font-weight: 100;
+    font-size: 13px;
+    text-align: initial;
+    line-height: 20px;
+    padding: 0px 25px;
+}
+
+@media only screen and (max-width: 1200px) {
+     :root {
+        --size14: 14px;
+        --size18: 18px;
+    }
+    .css-nxo287-MuiInputBase-input-MuiOutlinedInput-input {
+        font-size: 14px !important;
+    }
+}
+
+@media only screen and (max-width: 880px) {
+    .list-group {
+        display: grid !important;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 14vw));
+        width: 90%;
+        margin: auto;
+        gap: 3rem;
+        justify-content: center;
+    }
+}
+
+.flip-card {
+    background-color: transparent;
+    min-width: 250px;
+    width: 14vw;
+    min-height: 250px;
+    height: 14vw;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.flip-card-active .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.flip-card-front {}
+
+.flip-card-back {
+    transform: rotateY(180deg);
+}
+
+.float-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.floating-img {
+    transform: translateY(-5%);
+    animation: floater 2s infinite;
+    transition: ease 1;
+}
+
+.floating-img:hover {
+    transform: translateY(0%);
+    animation: none;
+    transition: transform ease 1;
+}
+
+@keyframes floater {
+    0% {
+        transform: translateY(-5%);
+        transition: ease-in 1s;
+    }
+    50% {
+        transform: translateY(5%);
+        transition: ease 1s;
+    }
+}
