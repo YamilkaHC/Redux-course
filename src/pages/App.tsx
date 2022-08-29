@@ -4,49 +4,56 @@ import PokemonCard from '../components/Card/card';
 import Searcher from '../components/Search/Searcher';
 import provider from '../providers/axiosBase';
 import pokemonsProvider from '../providers/pokemons.provider';
-import { PokemonRowI, setData, setPagination } from '../redux/reducers/pokemonsSlice';
+import { PokemonReduxI, PokemonRowI, setData, setPagination } from '../redux/reducers/pokemonsSlice';
 import './App.css';
 
+export interface resultPokeListI {
+  count: number
+  next: string
+  previous: string
+  results: Array<resultRowI>
+}
 
+export interface resultRowI {
+  name?: string
+  url?: string
+}
 
 const App = () => {
 
-  const dataRedux: any = useSelector((state: any) => state.pokemons)
+  const dataRedux: PokemonReduxI = useSelector((state: any) => state.pokemons.data)
   const dispatch = useDispatch()
 
 
-
-  useEffect(() => {
-    // dispatch(setData("hello word pokemos"))
-  }, [])
-
-  useEffect(() => {
+  const getData = async () => {
     let pokemonsList: PokemonRowI[] = []
 
-    pokemonsProvider.getAllPokemons()
-      .then((response: any) => {
-        pokemonsList = response?.results?.map((row?: { name?: string, url?: string }) => {
-          return { name: row?.name, url: row?.url }
-        })
-        dispatch(setPagination({ limit: 10, offset: 0, total: response.count }))
+    await pokemonsProvider.getAllPokemons()
+      .then((response: resultPokeListI) => {
+        pokemonsList = response?.results?.map((row?: resultRowI) => { return { name: row?.name, url: row?.url } })
+        dispatch(setPagination({ limit: 20, offset: 0, total: response.count }))
       })
-      .catch((err: any) => console.log('err3!! ✨✨✨', err))
 
-    // pokemonsList = pokemonsList.map(async (pokemon: { name?: string, url?: string }) => {
 
-    //   const details = await pokemonsProvider.getOnePokemon(pokemon?.url as string)
 
-    //   return ({ name: pokemon.name, image: details?.sprites?.other?.dream_world?.front_default })
-    //   // .then((response: any) => { return ({ name: row?.name, image: response?.sprites?.other?.dream_world?.front_default }) })
-    //   // .catch((error: any) => { return ({ name: row?.name }) })
-    // }
-    // ) as  PokemonRowI[]
-
-    console.log('pokemonsList!! ✨✨✨', pokemonsList)
-
+    pokemonsList = await Promise.all(
+      pokemonsList.map(async (pokemon: resultRowI) => {
+        const details = await pokemonsProvider.getOnePokemon(pokemon?.url as string)
+        return ({ name: pokemon.name, img: details?.sprites?.other?.dream_world?.front_default })
+      })
+    )
 
     dispatch(setData({ data: pokemonsList }))
+  }
+
+
+  useEffect(() => {
+    getData()
   }, [])
+
+  useEffect(() => {
+    console.log('$!!!dataRedux ✨✨✨', dataRedux)
+  }, [dataRedux])
 
   return (
     <div className="App">
@@ -94,9 +101,9 @@ const App = () => {
           <Searcher />
         </div>
 
-        <div className="list-group d-grid">
-          {["", "", "", "", "", ""].map(() => (
-            <PokemonCard title={"Ditto"} img={""} text={"Fire and Magic"} />
+        <div className="list-group d-grid py-5">
+          {dataRedux?.data?.map((pokemon: PokemonRowI) => (
+            <PokemonCard title={pokemon.name || ""} img={pokemon.img || ""} text={"Fire and Magic"} />
           ))}
         </div>
       </div>

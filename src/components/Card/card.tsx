@@ -11,12 +11,9 @@ const Card = ({ title, img, text }: PokemonCardI) => {
       <div className={`flip-card ${showInfo ? "flip-card-active" : ""}`}>
         <div className="flip-card-inner">
           <div className="pokemon-card flip-card-front">
-            <img className="pokemon-img" srcSet={`${img}?w=248&fit=crop&auto=format&dpr=2 2x`} alt={title}
-              loading="lazy"
-              src={`https://github.com/Superviral/Pokemon-GO-App-Assets-and-Images/blob/master/Pokemon%20Models%20(PNG%20Format)/001%20-%20ymJUN7U.png?raw=true?w=248&fit=crop&auto=format`}
-            />
+            <img className="pokemon-img" srcSet={`${img}?w=248&fit=crop&auto=format&dpr=2 2x`} alt={title} loading="lazy" src={img} />
             <div className="d-flex justify-content-around">
-              <span onClick={() => setShowInfo(true)} className="text-18 text-card" > Lorem ipsum </span>
+              <span onClick={() => setShowInfo(true)} className="text-18 text-card text-capitalize" > {title}</span>
               {false ? (
                 <img className="start" width={23} height={23} src="/assets/star.png" />
               ) : (
@@ -27,7 +24,7 @@ const Card = ({ title, img, text }: PokemonCardI) => {
 
           <div onMouseLeave={() => setShowInfo(false)} className="flip-card-back pokemon-card justify-content-evenly" >
             <div className=" d-flex justify-content-around">
-              <span className="text-18 ">Lorem ipsum</span>
+              <span className="text-18 ">{title}</span>
               <div>
                 <img alt="pokemon" src="/assets/filterwater.svg" />
                 <img alt="pokemon" src="/assets/filterwater.svg" />
@@ -38,7 +35,7 @@ const Card = ({ title, img, text }: PokemonCardI) => {
               iure, bet aliquam officiis aspernatur doloribus pariatur eos nulla.
             </p>
             <div className="d-flex justify-content-end">
-            <span className="p-card text-18 text-card read-more" //onClick={() => setOpen(true)}
+            <span className="p-card text-18  text-capitalize text-card read-more" //onClick={() => setOpen(true)}
             >Reade more...</span>
               {/* <span className="p-card text-18 text-card">Reade more...</span> */}
             </div>

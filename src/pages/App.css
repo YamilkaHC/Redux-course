@@ -3,7 +3,7 @@
     --fontShoulder: 'Big Shoulders Stencil Display', cursive;
     --bg-global: #1C0B20;
     --size14: 1vw;
-    --size18: 1.2vw;
+    --size18: 1vw;
     --size30: 30px;
     --size20: 20px;
     --size40: 40px;
@@ -143,10 +143,11 @@ input {
 
 .list-group {
     display: grid !important;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 14vw));
-    width: 63vw;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 15vw));
+    justify-items: center;
+    width: 80vw;
     margin: auto;
-    gap: 5rem;
+    gap: 23px;
     justify-content: space-between;
 }
 
@@ -161,6 +162,28 @@ input {
     background: rgba(217, 217, 217, 0.08);
     box-shadow: 6px 6px 9px rgba(0, 0, 0, 0.25);
     border-radius: 20px;
+    transition: all 0.8s ease;
+}
+
+.pokemon-card:hover {
+    transition: all 0.8s ease;
+    background: rgb(217 217 217 / 20%);
+}
+
+@keyframes background {
+    0% {
+        background: rgb(217 217 217 / 10%);
+        ;
+        transition: ease-in 1s;
+    }
+    50% {
+        background: rgb(217 217 217 / 17%);
+        ;
+        transition: ease 1s;
+    }
+    100% {
+        transition: ease 1s;
+    }
 }
 
 .search-div {
@@ -182,8 +205,8 @@ input {
 }
 
 .pokemon-img {
-    width: 100px !important;
-    height: auto !important;
+    width: auto !important;
+    height: 100px !important;
     margin: 2rem auto 0rem;
 }
 
@@ -238,7 +261,7 @@ input {
         grid-template-columns: repeat(auto-fill, minmax(250px, 14vw));
         width: 90%;
         margin: auto;
-        gap: 3rem;
+        gap: 1rem;
         justify-content: center;
     }
 }
