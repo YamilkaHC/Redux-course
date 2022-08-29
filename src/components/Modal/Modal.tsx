@@ -1,47 +1,54 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
+import { useEffect, useState } from 'react';
 
-const style = {
-    position: 'absolute' as 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 400,
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
-    boxShadow: 24,
-    pt: 2,
-    px: 4,
-    pb: 3,
-};
-
-const Modal = () => {
-    const [open, setOpen] = React.useState(false);
+const Modal = ({ props }: any) => {
+  const [open, setOpen] = useState(false);
 
 
-    return (
-        <>
-             {/* <span onClick={()=> setOpen(true);} data-bs-toggle="modal" data-bs-target="#exampleModal" className="p-card text-18 text-card">Reade more...</span>
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+  useEffect(() => {
+    console.log('here!! ✨✨✨', open)
+    // const root = document.getElementById("root");
+    // const modal = document.getElementById("myModal");
+    // const span = document.getElementById("read-more")
+
+    // if (!open) {
+    //   span?.before(modal || "");
+    //   return
+    // }
+
+    // root?.before(modal || "");
+  }, [open])
+
+  return (
+    <>
+    
+      {open &&
+        <div className="modal show modal-dialog-centered" id="myModal" aria-modal="true" role="dialog" style={{ display: "block", background: "#0b0a0aa1" }}>
+          <div className="modal-dialog modal-max">
+            <div className="modal-content modal-purple">
+              <div className="border-0 d-flex justify-content-end modal-header">
+                <button onClick={() => setOpen(false)}>
+                  <img className='' style={{ cursor: "pointer" }}  width="20" src='/assets/x.svg' />
+                  </button>
+              </div>
+
+              <div className="modal-body">
+                {/* <div className="pokemon-card flip-card-front"> */}
+                <img className="pokemon-img" srcSet={`${props?.img || ""}?w=248&fit=crop&auto=format&dpr=2 2x`} alt={props?.title || ""}
+                  loading="lazy"
+                  src={`https://github.com/Superviral/Pokemon-GO-App-Assets-and-Images/blob/master/Pokemon%20Models%20(PNG%20Format)/001%20-%20ymJUN7U.png?raw=true?w=248&fit=crop&auto=format`}
+                />
+
+                {/* </div> */}
+              </div>
+
+
+            </div>
+          </div>
         </div>
-        <div class="modal-body">
-            ...
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-        </div>
-    </div>
-    </div> */}
-            </>
-    );
+      }
+    </>
+  )
 }
 
 export default Modal

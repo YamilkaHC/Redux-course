@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Modal from "../Modal/Modal";
 import { PokemonCardI } from "./card.interface";
 
 
@@ -37,7 +38,9 @@ const Card = ({ title, img, text }: PokemonCardI) => {
               iure, bet aliquam officiis aspernatur doloribus pariatur eos nulla.
             </p>
             <div className="d-flex justify-content-end">
-              <span className="p-card text-18 text-card">Reade more...</span>
+            <span className="p-card text-18 text-card read-more" //onClick={() => setOpen(true)}
+            >Reade more...</span>
+              {/* <span className="p-card text-18 text-card">Reade more...</span> */}
             </div>
           </div>
         </div>

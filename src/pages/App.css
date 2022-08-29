@@ -259,6 +259,14 @@ input {
     transform-style: preserve-3d;
 }
 
+.modal-purple {
+    background: #1C0B20 !important;
+}
+
+.modal-max {
+    max-width: 800px !important;
+}
+
 .flip-card-active .flip-card-inner {
     transform: rotateY(180deg);
 }
@@ -295,6 +303,13 @@ input {
     transform: translateY(0%);
     animation: none;
     transition: transform ease 1;
+}
+
+@media (max-width: 576px) {
+    .modal-dialog {
+        max-width: 500px !important;
+        margin: 1.75rem auto;
+    }
 }
 
 @keyframes floater {
