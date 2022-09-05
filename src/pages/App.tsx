@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PokemonCard from '../components/Card/card';
 import Searcher from '../components/Search/Searcher';
+import Skeleton from '../components/Skeleton/Skeleton';
 import provider from '../providers/axiosBase';
 import pokemonsProvider from '../providers/pokemons.provider';
 import { PokemonReduxI, PokemonRowI, setData, setPagination } from '../redux/reducers/pokemonsSlice';
@@ -25,16 +26,14 @@ const App = () => {
   const dispatch = useDispatch()
 
 
-  const getData = async () => {
+  const getData = async (_offset: number) => {
     let pokemonsList: PokemonRowI[] = []
 
-    await pokemonsProvider.getAllPokemons()
+    await pokemonsProvider.getAllPokemons(_offset)
       .then((response: resultPokeListI) => {
         pokemonsList = response?.results?.map((row?: resultRowI) => { return { name: row?.name, url: row?.url } })
-        dispatch(setPagination({ limit: 20, offset: 0, total: response.count }))
+        dispatch(setPagination({ limit: 20, offset: _offset, total: response.count }))
       })
-
-
 
     pokemonsList = await Promise.all(
       pokemonsList.map(async (pokemon: resultRowI) => {
@@ -43,17 +42,30 @@ const App = () => {
       })
     )
 
-    dispatch(setData({ data: pokemonsList }))
+    dispatch(setData({ data: [...dataRedux.data, ...pokemonsList] }))
   }
 
 
   useEffect(() => {
-    getData()
+    getData(0)
   }, [])
 
   useEffect(() => {
-    console.log('$!!!dataRedux ✨✨✨', dataRedux)
-  }, [dataRedux])
+    if(!dataRedux?.data) return
+    let secondLastChild = document.querySelectorAll(".flip-card:nth-last-child(6)")[0];
+
+    if(!secondLastChild) return
+
+    let observer = new IntersectionObserver((entries : any) => {
+      console.log('entries?.isIntersecting!! ✨✨✨', entries)
+      if(entries[0]?.isIntersecting){
+        getData(dataRedux.offset + 20)
+      }
+
+    });
+    observer.observe(secondLastChild)
+  }, [dataRedux?.data])
+
 
   return (
     <div className="App">
@@ -78,10 +90,10 @@ const App = () => {
           <div className="header-left ">
             <div className="hr-horizontal"></div>
             <h1 className="ps-5 pt-5 mt-5">POKEDUX</h1>
-            <button className="ms-5 align-items-center button-header d-flex gap-2 justify-content-center">
+            <a href="#search-sections" className="ms-5 align-items-center button-header d-flex gap-2 justify-content-center">
               <img alt="pokeball button" src="/assets/pokemonButton.svg" />
               See pokemons
-            </button>
+            </a>
 
 
 
@@ -101,9 +113,12 @@ const App = () => {
           <Searcher />
         </div>
 
-        <div className="list-group d-grid py-5">
-          {dataRedux?.data?.map((pokemon: PokemonRowI) => (
-            <PokemonCard title={pokemon.name || ""} img={pokemon.img || ""} text={"Fire and Magic"} />
+        <div id="search-sections" className="list-group d-grid py-5">
+          {dataRedux?.data?.map((pokemon: PokemonRowI, index: number) => (
+            <PokemonCard key={`pokemon-card-${index}`} title={pokemon.name || ""} img={pokemon.img || ""} text={"Fire and Magic"} />
+          ))}
+          {["", "", "", "", "" ].map(()=> (
+            <Skeleton/>
           ))}
         </div>
       </div>

@@ -2,8 +2,8 @@ import Provider from "./axiosBase";
 
 class PokemonsProvider extends Provider {
 
-    async getAllPokemons(): Promise<any> {
-        const response = await this.get(`https://pokeapi.co/api/v2/pokemon?offset=0&limit=40`);
+    async getAllPokemons(offset: number): Promise<any> {
+        const response = await this.get(`https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=20`);
         return Promise.resolve(response);
     }
 

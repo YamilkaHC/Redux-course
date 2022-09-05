@@ -6,7 +6,6 @@ const Modal = ({ props }: any) => {
 
 
   useEffect(() => {
-    console.log('here!! ✨✨✨', open)
     // const root = document.getElementById("root");
     // const modal = document.getElementById("myModal");
     // const span = document.getElementById("read-more")

@@ -39,7 +39,8 @@ h1 {
     box-shadow: inset -3px -3px 4px rgba(0, 0, 0, 0.6), inset -5px -5px 25px rgba(241, 241, 241, 0.07);
     backdrop-filter: blur(4px);
     border-radius: 22px;
-    color: white;
+    color: white !important;
+    text-decoration: none;
     font-weight: 100;
 }
 
@@ -61,12 +62,16 @@ body,
 .hr-vertial {
     position: absolute;
     border-left: 1.5px solid #53314E;
-    height: 737px;
+    height: 100%;
     left: 17%;
 }
 
 .top-1 {
     top: auto !important;
+}
+
+.header {
+    position: relative;
 }
 
 .header-rigth {
@@ -105,6 +110,12 @@ input {
     width: 63vw !important;
     margin: 2rem auto;
     padding: 0px 0.5rem;
+    overflow-x: auto;
+    gap: 1rem;
+}
+
+.filter-div::-webkit-scrollbar {
+    display: none;
 }
 
 .filter-badge {
@@ -322,16 +333,67 @@ input {
     transition: ease 1;
 }
 
-.floating-img:hover {
+
+/* .floating-img:hover {
     transform: translateY(0%);
     animation: none;
     transition: transform ease 1;
+} */
+
+.skeleton {
+    animation: charging 0.8s infinite;
+    border-radius: 20px;
+}
+
+@keyframes charging {
+    0% {
+        background-color: rgba(217, 217, 217, 0.08);
+    }
+    25% {
+        background-color: rgba(217, 217, 217, 0.09);
+    }
+    35% {
+        background-color: rgba(217, 217, 217, 0.1);
+    }
+    50% {
+        background-color: rgba(217, 217, 217, 0.12);
+    }
+    75% {
+        background-color: rgba(217, 217, 217, 0.1);
+    }
+    85% {
+        background-color: rgba(217, 217, 217, 0.09);
+    }
+    100% {
+        background-color: rgba(217, 217, 217, 0.08);
+    }
+}
+
+@media only screen and (max-width: 1839px) {
+    .skeleton:nth-last-child(1) {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 994px) {
+    .skeleton:nth-last-child(2) {
+        display: none;
+    }
+    .skeleton:nth-last-child(3) {
+        display: none;
+    }
 }
 
 @media (max-width: 576px) {
     .modal-dialog {
         max-width: 500px !important;
         margin: 1.75rem auto;
+    }
+    .search {
+        width: calc(100% - 2rem) !important;
+    }
+    .filter-div {
+        width: calc(100% - 2rem) !important;
     }
 }
 
