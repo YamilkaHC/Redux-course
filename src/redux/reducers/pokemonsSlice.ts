@@ -1,24 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-
-
-
-export interface PokemonReduxI {
-    offset: number
-    limit: number
-    data: Array<PokemonRowI>
-    total: number
-}
-
-export interface PokemonRowI {
-    id?: number
-    name?: string
-    img?: string
-    element?: string
-    linkDescription?: string
-    description?: string
-
-}
-
+import { FilterI, PaginationI, PokemonReduxI, PokemonRowI } from '../types/pokemons';
 
 
 export const Pokemons: { data: PokemonReduxI } = {
@@ -26,16 +7,12 @@ export const Pokemons: { data: PokemonReduxI } = {
         offset: 0,
         limit: 0,
         total: 0,
-        data: []
+        data: [],
+        filter: { ability: "", search: "" }
     }
 
 }
 
-export interface PaginationI {
-    offset: number
-    limit: number
-    total: number
-}
 
 export const PokemonsSlice = createSlice({
     initialState: Pokemons,
@@ -49,9 +26,12 @@ export const PokemonsSlice = createSlice({
         setData: (state: { data: PokemonReduxI }, action: PayloadAction<{ data: Array<PokemonRowI> }>) => {
             state.data.data = action.payload.data
         },
-
+        setFilters: (state: { data: PokemonReduxI }, action: PayloadAction<{ data: FilterI }>) => {
+            state.data.filter.ability = action.payload.data.ability
+            state.data.filter.search = action.payload.data.search
+        },
         handlerClear: () => Pokemons
     }
 })
-export const { setPagination, handlerClear, setData } = PokemonsSlice.actions;
+export const { setPagination, handlerClear, setData, setFilters } = PokemonsSlice.actions;
 export default PokemonsSlice.reducer;

@@ -1,6 +1,6 @@
+import { PokemonRowI } from "../../redux/types/pokemons";
+
 export interface PokemonCardI {
-    title: string;
-    img: string;
-    text: string;
-  }
-  
+  pokemonData: PokemonRowI
+
+}

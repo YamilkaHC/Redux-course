@@ -1,22 +1,28 @@
-import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './pages/App';
-import { Provider } from 'react-redux'
+import { Provider } from 'react-redux';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import NotFound from './pages/404';
+import Home from './pages/Home';
 import { store } from './redux/store/store';
 
 const root = ReactDOM.createRoot(
+
   document.getElementById('root') as HTMLElement
 );
 
 
 
 root.render(
-  <React.StrictMode>
-      <Provider store={store}>
-    <App />
-    </Provider>
-  </React.StrictMode>
+
+  <Provider store={store}>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/"  element={<Home />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </BrowserRouter>
+  </Provider>,
+
 );
 
 
