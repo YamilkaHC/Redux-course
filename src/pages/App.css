@@ -214,6 +214,15 @@ input {
     justify-content: space-between;
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+    -webkit-box-shadow: none !important;
+    color: white !important;
+}
+
 .pokemon-card {
     min-width: 250px;
     width: 14vw;

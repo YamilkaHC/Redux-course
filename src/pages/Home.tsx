@@ -50,8 +50,9 @@ const Home = () => {
   const GetPokemonsImages = async (_offset: number, pokemonsList: Array<{ name: string }> | any) => {
     pokemonsList = await Promise.all(
       pokemonsList.map(async (pokemon: resultRowI) => {
-        const details: PokemonByName = await pokemonsProvider.getPokemonByName(pokemon?.name || "")
-        return details?.data !== "Not Found" && { name: pokemon.name, img: details?.sprites?.other?.dream_world?.front_default, weight: details.weight, ability: details?.abilities[0]?.ability?.name || "none" }
+        const details: PokemonByName  = await pokemonsProvider.getPokemonByName(pokemon?.name || "")
+        return details?.data !== "Not Found" && { name: pokemon.name, img: details?.sprites?.other?.dream_world?.front_default || details?.sprites?.front_default || details?.sprites?.other?.[`official-artwork`]?.front_default,
+         weight: details.weight, ability: details?.abilities[0]?.ability?.name || "none" }
       })
     )
     pokemonsList = pokemonsList[0] === false ? [] : pokemonsList
