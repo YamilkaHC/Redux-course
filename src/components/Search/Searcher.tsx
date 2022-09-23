@@ -9,12 +9,13 @@ import { setDataAbility, setPaginationAbility } from "../../redux/reducers/Abili
 import { setFilters } from "../../redux/reducers/pokemonsSlice";
 import { AbilitiesReduxI } from "../../redux/types/abilities";
 import { PokemonReduxI } from "../../redux/types/pokemons";
+import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
 
 const Searcher = () => {
   const AbilitiesRedux: AbilitiesReduxI = useSelector((state: any) => state.abilities.data)
   const PokemonsRedux: PokemonReduxI = useSelector((state: any) => state.pokemons.data)
   const dispatch = useDispatch()
-  const [valueToSearch, setValueToSearch] =  useState("")
+  const [valueToSearch, setValueToSearch] = useState("")
 
 
   const getAbilities = async (_offset: number) => {
@@ -31,37 +32,46 @@ const Searcher = () => {
   }, [])
 
   const handlerAbility = (ability: string) => {
-    dispatch(setFilters({ data: { ability: PokemonsRedux?.filter?.ability === ability? "" : ability, search: "" } }))
+    dispatch(setFilters({ data: { ability: PokemonsRedux?.filter?.ability === ability || ability === "" ? "" : ability, search: "" } }))
   }
 
   const handlerSearch = () => {
     dispatch(setFilters({ data: { ability: "", search: valueToSearch } }))
   }
 
+  useEffect(() => {
+    console.log('$!!!AbilitiesRedux?.data ✨✨✨', AbilitiesRedux?.data)
+  }, [AbilitiesRedux?.data])
   return (
     <>
-    <form onSubmit={(e: React.FormEvent<HTMLFormElement>)=> { e.preventDefault(); handlerSearch() }}>
-      <TextField
-        InputProps={{ endAdornment: (<InputAdornment className="cursor-pointer" position="start"> 
-        <SearchIcon className="cursor-pointer" onClick={()=> handlerSearch() } color="secondary" /> 
-        </InputAdornment>), }}
-        onChange={(e: any) => setValueToSearch(e.target.value)}
-        className="search"
-        id="outlined-basic"
-        variant="outlined"
-        placeholder="search"
-        color="secondary"
-        focused
-      />
+      <form onSubmit={(e: React.FormEvent<HTMLFormElement>) => { e.preventDefault(); handlerSearch() }}>
+        <TextField
+          InputProps={{
+            endAdornment: (<InputAdornment className="cursor-pointer" position="start">
+              <SearchIcon className="cursor-pointer" onClick={() => handlerSearch()} color="secondary" />
+            </InputAdornment>),
+          }}
+          onChange={(e: any) => setValueToSearch(e.target.value)}
+          value={valueToSearch}
+          className="search"
+          id="outlined-basic"
+          variant="outlined"
+          placeholder="search"
+          color="secondary"
+          focused
+        />
       </form>
 
 
-      <div className="filter-div d-flex justify-content-between align-items-end">
-        {AbilitiesRedux?.data?.map((ability: any, index: number) => (
-          <div onClick={() => handlerAbility(ability?.name)} key={`element-${index}`} className={`d-flex filter-badge gap-2 justify-content-between  ${PokemonsRedux.filter.ability === ability?.name && "filter-badge-active"}`}>
-            <span className={`text-nowrap text-capitalize`}>{ability?.name}</span>
-          </div>
-        ))}
+      <div className="d-flex filter-container align-items-end">
+        <div className="filter-div d-flex justify-content-between align-items-end">
+          {AbilitiesRedux?.data?.map((ability: any, index: number) => (
+            <div onClick={() => handlerAbility(ability?.name)} key={`element-${index}`} className={`d-flex filter-badge gap-2 justify-content-between  ${PokemonsRedux.filter.ability === ability?.name && "filter-badge-active"}`}>
+              <span className={`text-nowrap text-capitalize`}>{ability?.name}</span>
+            </div>
+          ))}
+        </div>
+        <DeleteOutlinedIcon onClick={() => {handlerAbility(""); setValueToSearch("")}} className="cursor-pointer delete-button ms-2 mb-2" color="error" />
       </div>
     </>
   );

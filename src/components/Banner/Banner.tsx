@@ -8,7 +8,7 @@ const BannerPage = () => {
             <div className="d-flex justify-content-between">
                 <div className="header-left ">
                     <div className="hr-horizontal"></div>
-                    <h1 className="ps-5 pt-5 mt-5">POKEDUX</h1>
+                    <h1 className="ps-5 pt-5 mt-5 text-start">POKEDUX</h1>
                     <a href="#search-sections" className="ms-5 align-items-center button-header d-flex gap-2 justify-content-center">
                         <img alt="pokeball button" src="/assets/pokemonButton.svg" />
                         See pokemons

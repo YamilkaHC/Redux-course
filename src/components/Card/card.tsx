@@ -29,7 +29,7 @@ console.log("abilitiesResult" , abilitiesResult)
       <div className={`flip-card ${showInfo ? "flip-card-active" : ""}`}>
         <div className="flip-card-inner">
           <div className="pokemon-card flip-card-front">
-            <img className="pokemon-img" srcSet={`${pokemonData.img}?w=248&fit=crop&auto=format&dpr=2 2x`} alt={pokemonData.name} loading="lazy" src={pokemonData.img} />
+            <img className={`pokemon-img ${String(pokemonData?.img).includes("dream-world")? "": "h140"}`} srcSet={`${pokemonData.img}?w=248&fit=crop&auto=format&dpr=2 2x`} alt={pokemonData.name} loading="lazy" src={pokemonData.img} />
             <div className="d-flex justify-content-around">
               <span onClick={() => setShowInfo(true)} className="text-18 text-card text-capitalize" > {pokemonData.name}</span>
               {false ? (
