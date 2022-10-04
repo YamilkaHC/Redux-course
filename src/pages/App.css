@@ -29,6 +29,7 @@ h1 {
 }
 
 .button-header {
+    gap: .8rem;
     min-width: 142px;
     width: 11vw;
     font-size: var(--size14);
@@ -187,9 +188,13 @@ input {
     font-size: 18px !important;
 }
 
-.button-header svg {
+.button-header img {
     width: 2.5vw;
-    min-width: 35px;
+    min-width: 22px;
+}
+
+.logo {
+    padding: 3rem;
 }
 
 .logo img {
@@ -334,6 +339,7 @@ input:-webkit-autofill:active {
 }
 
 .pokeball {
+    margin-bottom: 3rem;
     width: 130px;
     height: 130px;
     margin-top: 90px;
@@ -435,6 +441,10 @@ input:-webkit-autofill:active {
     border-radius: 20px;
 }
 
+.header-m-5 {
+    margin-left: 3rem;
+}
+
 @keyframes charging {
     0% {
         background-color: rgba(217, 217, 217, 0.08);
@@ -479,6 +489,9 @@ input:-webkit-autofill:active {
         width: 120px;
         height: 120px;
     }
+    .hr-vertial {
+        left: 22%;
+    }
 }
 
 @media only screen and (max-width: 830px) {
@@ -506,6 +519,44 @@ input:-webkit-autofill:active {
 }
 
 @media (max-width: 576px) {
+    .header-rigth {
+        top: 27%;
+        background-position-y: bottom;
+        height: 63vw !important;
+    }
+    .header-m-5 {
+        margin-left: 1rem;
+    }
+    .logo {
+        padding: 2rem 1rem !important;
+    }
+    .hr-horizontal {
+        top: 90px;
+    }
+    .logo img {
+        width: 4vw !important;
+        min-width: 80px !important;
+    }
+    .hr-vertial {
+        left: 25%;
+    }
+    .floating-img {
+        width: 30px;
+    }
+    .pokeball {
+        width: 55px;
+        height: 55px;
+        margin-bottom: 2rem;
+        margin-top: 80px !important;
+    }
+    .button-header {
+        gap: 5px !important;
+        min-width: 110px;
+        width: 11vw;
+        font-size: 11.5px;
+        height: 2vw;
+        min-height: 40px;
+    }
     .modal-dialog {
         max-width: 500px !important;
         margin: 1.75rem auto;
@@ -514,13 +565,13 @@ input:-webkit-autofill:active {
         width: calc(100% - 2rem) !important;
     }
     .filter-div {
-        width: calc(100% - 2rem) !important;
+        width: calc(100% - 1rem) !important;
     }
     .filter-container {
-        width: calc(100% - 2rem) !important;
+        width: calc(100% - 1rem) !important;
     }
     .filter-badge {
-        padding: 15px 5px 15px 5px !important;
+        padding: 5px 10px 5px 10px !important;
     }
 }
 
