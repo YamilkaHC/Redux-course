@@ -126,7 +126,7 @@ input {
 
 .filter-badge {
     padding: 0.1vw 1vw 0.1vw 1.3vw;
-    background: #1E0719;
+    background: #97979733;
     border-radius: 25px;
     color: white;
     font-weight: 100;
@@ -501,6 +501,7 @@ input:-webkit-autofill:active {
     .pokeball {
         width: 90px;
         height: 90px;
+        margin-top: 41px !important;
     }
 }
 
@@ -514,6 +515,12 @@ input:-webkit-autofill:active {
     }
     .filter-div {
         width: calc(100% - 2rem) !important;
+    }
+    .filter-container {
+        width: calc(100% - 2rem) !important;
+    }
+    .filter-badge {
+        padding: 15px 5px 15px 5px !important;
     }
 }
 

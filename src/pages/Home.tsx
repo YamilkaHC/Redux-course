@@ -19,6 +19,8 @@ import './App.css';
 const Home = () => {
 
   const dataRedux: PokemonReduxI = useSelector((state: any) => state.pokemons.data)
+  const favorites: { data: Array<any> } = useSelector((state: any) => state.favorites)
+
   const dispatch = useDispatch()
   const [loading, setLoading] = useState(true)
 
@@ -50,9 +52,11 @@ const Home = () => {
   const GetPokemonsImages = async (_offset: number, pokemonsList: Array<{ name: string }> | any) => {
     pokemonsList = await Promise.all(
       pokemonsList.map(async (pokemon: resultRowI) => {
-        const details: PokemonByName  = await pokemonsProvider.getPokemonByName(pokemon?.name || "")
-        return details?.data !== "Not Found" && { name: pokemon.name, img: details?.sprites?.other?.dream_world?.front_default || details?.sprites?.front_default || details?.sprites?.other?.[`official-artwork`]?.front_default,
-         weight: details.weight, ability: details?.abilities[0]?.ability?.name || "none" }
+        const details: PokemonByName = await pokemonsProvider.getPokemonByName(pokemon?.name || "")
+        return details?.data !== "Not Found" && {
+          name: pokemon.name, img: details?.sprites?.other?.dream_world?.front_default || details?.sprites?.front_default || details?.sprites?.other?.[`official-artwork`]?.front_default,
+          weight: details.weight, ability: details?.abilities[0]?.ability?.name || "none"
+        }
       })
     )
     pokemonsList = pokemonsList[0] === false ? [] : pokemonsList
@@ -68,8 +72,12 @@ const Home = () => {
   }
 
   useEffect(() => {
-
-    if (dataRedux.filter.ability) getByAbility(dataRedux.filter.ability)
+    
+    if (dataRedux.filter.ability === "favorites") {
+      dispatch(setPagination({ limit: favorites.data.length, offset: 0, total: favorites.data.length }))
+      dispatch(setData({ data: [...favorites.data] }))
+    }
+    else if (dataRedux.filter.ability) getByAbility(dataRedux.filter.ability)
     else if (dataRedux.filter.search) GetPokemonsByName()
     else getAll(0)
 
@@ -86,7 +94,7 @@ const Home = () => {
         </div>
         <InfiniteScroll
           dataLength={dataRedux.data.length}
-          next={() => getAll(dataRedux.offset + 20)}
+          next={dataRedux.filter.ability === "favorites" ? () => null : () => getAll(dataRedux.offset + 20)}
           hasMore={dataRedux.data.length >= dataRedux.total ? false : true}
           loader={<Skeleton />}
           endMessage={dataRedux.data.length ? <p className='fw-lighter text-white text-center' >Yay! You have seen it all </p> : <></>}
