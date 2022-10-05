@@ -1,6 +1,5 @@
 import SearchIcon from "@mui/icons-material/Search";
 import InputAdornment from "@mui/material/InputAdornment";
-import TextField from "@mui/material/TextField/TextField";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import DragScroll from "../../helpers/dragScroll.helper";
@@ -10,6 +9,7 @@ import { setFilters } from "../../redux/reducers/pokemonsSlice";
 import { AbilitiesReduxI } from "../../redux/types/abilities";
 import { PokemonReduxI, PokemonRowI } from "../../redux/types/pokemons";
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
+import TextField from "@mui/material/TextField/TextField";
 
 const Searcher = () => {
   const AbilitiesRedux: AbilitiesReduxI = useSelector((state: any) => state.abilities.data)
