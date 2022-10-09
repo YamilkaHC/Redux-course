@@ -54,6 +54,8 @@ h1 {
     height: 100%;
 }
 
+
+
 html,
 body,
 #root {
@@ -64,11 +66,41 @@ body,
 
 .hr-vertial {
     position: absolute;
+    animation: start-enter 2.5s ease-out;
     border-left: 1.5px solid #53314E;
     height: 100%;
     left: 17%;
+
 }
 
+
+@keyframes opacity-banner {
+    0% {
+      opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+  }
+
+@keyframes start-enter {
+    0% {
+      transform: translate(0px, -100%);
+    }
+    100% {
+        transform: translate(0px, 0%);
+    }
+  }
+
+
+  @keyframes start-enter-h {
+    0% {
+      transform: translate(-100%, 0%);
+    }
+    100% {
+        transform: translate(0%, 0%);
+    }
+  }
 .top-1 {
     top: auto !important;
 }
@@ -79,6 +111,7 @@ body,
 
 .header-rigth {
     background-image: url("/public/assets/banner.svg");
+    animation: opacity-banner 2.5s ease-out;
     height: 37vw;
     background-repeat: no-repeat;
     background-size: contain;
@@ -87,6 +120,7 @@ body,
 }
 
 .hr-horizontal {
+    animation: start-enter-h 2.5s ease-out;
     position: absolute;
     border-bottom: 1.5px solid #53314E;
     width: 100%;

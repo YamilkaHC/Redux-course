@@ -59,8 +59,8 @@ const Card = ({ pokemonData }: PokemonCardI) => {
               {description.slice(0, 200)}...
             </p>
             <div className="d-flex justify-content-end">
-              <span className="p-card text-18  text-capitalize text-card read-more" //onClick={() => setOpen(true)}
-              >Reade more...</span>
+              {/* <span className="p-card text-18  text-capitalize text-card read-more" //onClick={() => setOpen(true)}
+              >Reade more...</span> */}
               {/* <span className="p-card text-18 text-card">Reade more...</span> */}
             </div>
           </div>
